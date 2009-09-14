@@ -93,6 +93,16 @@ class YouTubePlayerWrapper
 		
 		player.stopVideo();
 	}
+	
+	public function pauseVideo():Void
+	{
+		TZTrace.info( NAME + ' pausing video' );
+	}
+
+	public function resumeVideo():Void
+	{
+		TZTrace.info( NAME + ' resuming video' );
+	}
 }
 
 /* End of file PlayerWrapper.as */
