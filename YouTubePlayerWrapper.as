@@ -46,8 +46,11 @@ class YouTubePlayerWrapper
 	private function init():Void
 	{
 		var playerHolder:MovieClip = parent.createEmptyMovieClip( 'playerHolder', parent.getNextHighestDepth() );
+		var bridgeName:String = ( bridge ? bridge : BRIDGE_NAME );
 		
-		bridge = new SWFBridgeAS2( BRIDGE_NAME, this );
+		TZTrace.info( NAME + ' connecting to bridge ' + bridgeName );
+		
+		bridge = new SWFBridgeAS2( bridgeName, this );
 		
 		bridge.addEventListener( 'connect', this );
 
