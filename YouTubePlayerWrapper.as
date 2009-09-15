@@ -24,10 +24,13 @@ class YouTubePlayerWrapper
 	private var parent:MovieClip;
 	private var player:TZYouTubePlayer;
 	private var bridge:SWFBridgeAS2;
+	private var bridgeName:String;
 	
-	public function YouTubePlayerWrapper(parent:MovieClip)
+	public function YouTubePlayerWrapper(parent:MovieClip, bridgeName:String)
 	{
 		TZTrace.info( NAME + ' created' );
+		
+		this.bridgeName = ( bridgeName ? bridgeName : BRIDGE_NAME );
 		
 		Stage.scaleMode = 'noScale';
 		Stage.align = 'TL';
@@ -45,8 +48,7 @@ class YouTubePlayerWrapper
 	
 	private function init():Void
 	{
-		var playerHolder:MovieClip = parent.createEmptyMovieClip( 'playerHolder', parent.getNextHighestDepth() );
-		var bridgeName:String = ( bridge ? bridge : BRIDGE_NAME );
+		var playerHolder:MovieClip = parent.createEmptyMovieClip( 'playerHolder' + bridgeName, parent.getNextHighestDepth() );
 		
 		TZTrace.info( NAME + ' connecting to bridge ' + bridgeName );
 		
