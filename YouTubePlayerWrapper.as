@@ -102,11 +102,15 @@ class YouTubePlayerWrapper
 	public function pauseVideo():Void
 	{
 		TZTrace.info( NAME + ' pausing video' );
+		
+		player.pauseVideo();
 	}
 
 	public function resumeVideo():Void
 	{
 		TZTrace.info( NAME + ' resuming video' );
+		
+		player.resumeVideo();
 	}
 }
 
