@@ -54,10 +54,11 @@ class YouTubePlayerWrapper
 		
 		bridge = new SWFBridgeAS2( bridgeName, this );
 		
-		bridge.addEventListener( 'connect', this );
+		bridge.addEventListener( 'connect', Delegate.create( this, handleBridgeConnect ) );
 
 		player = new TZYouTubePlayer( playerHolder );
 		
+		//player.addEventListener( TZYouTubePlayerEvent.CONNECTED,         	Delegate.create( this, sendEvent ) );
 		player.addEventListener( TZYouTubePlayerEvent.READY,         		Delegate.create( this, sendEvent ) );
 		player.addEventListener( TZYouTubePlayerEvent.PLAYER_ENDED,         Delegate.create( this, sendEvent ) );
 		player.addEventListener( TZYouTubePlayerEvent.PLAYER_PLAYING,       Delegate.create( this, sendEvent ) );
@@ -65,6 +66,11 @@ class YouTubePlayerWrapper
 		player.addEventListener( TZYouTubePlayerEvent.PLAYER_BUFFERING,     Delegate.create( this, sendEvent ) );
 		player.addEventListener( TZYouTubePlayerEvent.PLAYER_QUEUED,        Delegate.create( this, sendEvent ) );
 		player.addEventListener( TZYouTubePlayerEvent.PLAYER_NOT_STARTED,   Delegate.create( this, sendEvent ) );
+	}
+	
+	private function handleBridgeConnect(e):Void
+	{
+	    sendEvent( new TZYouTubePlayerEvent( TZYouTubePlayerEvent.CONNECTED, null, this ) );
 	}
 	
 	private function sendEvent(e:TZYouTubePlayerEvent):Void
