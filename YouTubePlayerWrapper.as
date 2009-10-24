@@ -118,6 +118,31 @@ class YouTubePlayerWrapper
 		
 		player.resumeVideo();
 	}
+	
+	public function getCurrentTime():Number
+	{
+		return player.getCurrentTime();
+	}
+	
+	public function getDuration():Number
+	{
+		return player.getDuration();
+	}
+	
+	public function getVideoUrl():String
+	{
+		return player.getVideoUrl();
+	}
+	
+	public function getPlaybackQuality():String
+	{
+		return player.getPlaybackQuality();
+	}
+	
+	public function setPlaybackQuality(suggestedQuality:String):Void
+	{
+		player.setPlaybackQuality(suggestedQuality);
+	}
 }
 
 /* End of file PlayerWrapper.as */
